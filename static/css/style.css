@@ -1,0 +1,26 @@
+body{
+    background: white url("../images/login_metagenomics.jpg") no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    text-align:center;
+}
+
+.loginpage{
+    margin-top: 3cm;
+    opacity: 0.7;
+}
+
+.card{
+    text-align: left;
+}
+
+.col-6{
+  max-width: 8cm;
+}
+
+.imglogin{
+    text-align:center;
+    opacity: 1;
+}

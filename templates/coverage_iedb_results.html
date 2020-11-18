@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+<h3>COVERAGE ANALYSIS RESULTS<span style="padding:10px; font-size:12px; vertical-align:top;">
+    <i class="far fa-question-circle"></i></span>
+</h3>
+
+Coverage by population
+
+<style>
+    textarea{
+    height: 20cm;
+    width: 25cm;
+    }
+</style>
+
+
+<p>{{ country }}</p>
+
+<textarea>{{ text }}</textarea>
+
+
+
+
+{% endblock %}
+
+

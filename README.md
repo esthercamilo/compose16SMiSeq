@@ -1,2 +1,2 @@
-# compose16SMiSeq
-Prospecta assessment
+# Metagenomics
+

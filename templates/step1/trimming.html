@@ -2,9 +2,34 @@
 {% load static %}
 {% block content %}
 
-<h3>Trimming<span style="padding:10px; font-size:12px; vertical-align:top;"></span></h3>
+<link href="{% static 'css/style2.css' %}" rel="stylesheet">
+
+<div style="font-size:20px;">Define the Phred score for trimming
+
+    <form action="" method="post">
+      {% csrf_token %}
+      <div class="input-group mb-3">
+          <input type="text" class="form-control" name="trim_threshold"
+                 aria-describedby="basic-addon2">
+          <div class="input-group-append">
+            <button class="btn btn-outline-secondary" type="input">Submit</button>
+          </div>
+      </div>
+    </form>
+</div>
 
 <script src="{% static 'js/tools.js' %}"></script>
+
+<div class="trim_files">
+    <h4>Available files</h4>
+    <table>
+        {% for line in files %}
+        <tr><td>{{ line }}</td></tr>
+        {% endfor %}
+    </table>
+</div>
+
+
 
 <!--<form action="" method="post">-->
 <!--    {% csrf_token %}-->

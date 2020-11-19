@@ -1,0 +1,19 @@
+.trim_files{
+   margin-top:20px;
+   overflow: scroll;
+   height:300px;
+   width:300px;
+   background-color:white;
+   display:inline;
+   margin-left:20px;
+   margin-right:20px;
+}
+
+.q{
+font-size:15px;
+color:black;
+}
+
+.a{
+font-size:13px;
+}

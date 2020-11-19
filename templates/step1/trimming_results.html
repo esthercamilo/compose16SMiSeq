@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+<link href="{% static 'css/style2.css' %}" rel="stylesheet">
+<script src="{% static 'js/tools.js' %}"></script>
+
+
+
+<div style="font-size:20px;">Performed trimming
+</div>
+
+
+{% for k, v in files.items %}
+<div class="trim_files">
+    <h4>Phred={{ k }}</h4>
+    <table>
+        {% for line in v %}
+        <tr>
+            <td>
+                <a href="#" class="open-modal-report" role="button" data-toggle="modal"
+                   data-form="{% url 'report' id=line }" data-target="#myEdit" >{{line}}</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+<div id="modal-div-report"></div>
+</div>
+{% endfor %}
+
+
+
+<script src="{% static 'js/graphs.js' %}"></script>
+
+
+
+{% endblock %}
+
+

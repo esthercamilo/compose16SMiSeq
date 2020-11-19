@@ -3,35 +3,28 @@ import os
 import logging
 import subprocess
 from pathlib import Path
-WORKDIR = Path(os.getcwd()).parent
+WORKDIR = Path(os.getcwd())
 logging.basicConfig(filename=os.path.join(WORKDIR, 'error.log'), filemode='a', level=logging.DEBUG)
 
 class QualityNGS(object):
-    def __init__(self, fastq_folder):
+    def __init__(self, threshold, fastq_folder = os.path.join(WORKDIR, 'data', 'fqs')):
         self.istrimmed = False
-        self.threshold = 30
+        self.threshold = threshold
         self.fastq_folder = fastq_folder
 
-    def trimming(self, threshold=None):
+    def trimming(self):
         self.istrimmed = True
-        self.threshold = threshold or self.threshold
         trimmomatic = os.path.join(WORKDIR, 'apps', 'Trimmomatic-0.39', 'trimmomatic-0.39.jar')
-        comm = ['java', '-jar', trimmomatic, 'SE', f'-phred{str(threshold)}']
-        fastq_files = ''
-        try:
-            fastq_files = os.listdir(os.path.join(self.fastq_folder,'fqs'))
-        except FileNotFoundError:
-            msg = 'The folder containing the fastq files must be necessarily be named \"fqs\".' \
-                  'The path in the argument must point to one level up.'
-            logging.error(msg)
-        if not bool(fastq_files):
-            msg = "The folder is empty"
-            logging.error(msg)
+        adapter = os.path.join(WORKDIR, 'apps','Trimmomatic-0.39','adapters','TruSeq3-SE.fa')
+        comm = ['java', '-jar', trimmomatic, 'SE', '-phred33']
+
+        fastq_files = [x for x in os.listdir(self.fastq_folder) if '_trimmed_' not in x]
         for f in fastq_files:
             fastq = os.path.join(self.fastq_folder, f)
-            comm = comm + [fastq]
+            output = os.path.join(self.fastq_folder, f.replace('.fastq', f'_trimmed_{self.threshold}.fastq'))
+            final_comm = comm + [fastq, output, f'ILLUMINACLIP:{adapter}:2:30:10']
             try:
-                subprocess.check_call(comm)
+                subprocess.check_call(final_comm)
             except subprocess.CalledProcessError as e:
                 logging(e.output)
 

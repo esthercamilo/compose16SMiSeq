@@ -3,22 +3,15 @@
 {% block content %}
 
 <link href="{% static 'css/style2.css' %}" rel="stylesheet">
+<script src="{% static 'js/graphs.js' %}"></script>
 
 <div style="font-size:20px;">Bacterial counting
 
-    <form action="" method="post">
-      {% csrf_token %}
-      <div class="input-group mb-3">
-          <input type="text" class="form-control" name="trim_threshold"
-                 aria-describedby="basic-addon2">
-          <div class="input-group-append">
-            <button class="btn btn-outline-secondary" type="input">Submit</button>
-          </div>
-      </div>
-    </form>
+    <div id="bacterial_couting"></div>
+    <script>count()</script>
 </div>
 
-<script src="{% static 'js/tools.js' %}"></script>
+
 
 <div class="trim_files">
     <h4>Available files</h4>

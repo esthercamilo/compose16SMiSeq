@@ -46,11 +46,41 @@ def getplot(idplot):
    return idplot
 
 def reports(request):
-   data1, data2 = getplot(id=1) #somente para 1 por enquanto
-   context = {
-      'before': data1, 'after':data2
-   }
-   return render(request, 'step1/modal.html', context)
+   # data1, data2 = getplot(id=1) #somente para 1 por enquanto
+   # context = {
+   #    'before': data1, 'after':data2
+   # }
+   return render(request, 'step1/modal.html', {})
+
+def otu(request):
+   # make_otu_table()
+   with open(os.path.join(WORKDIR, 'data', 'tables', 'otu_table_tax_amostras.tsv'), 'r') as f: #mudar para tabela final
+      header = f.readline().split('\t')
+      lines = [x.rstrip().split('\t') for x in f.readlines()]
+   return render(request, 'step1/otu.html', {'header':header, 'lines':lines})
+
+def taxonomy(request):
+   # make_otu_table()
+   with open(os.path.join(WORKDIR, 'data', 'tables', 'tax_table_amostras.tsv'), 'r') as f: #mudar para tabela final
+      header = f.readline().split('\t')
+      lines = [x.rstrip().split('\t') for x in f.readlines()]
+   return render(request, 'step1/taxonomy.html', {'header2':header, 'lines2':lines})
+
+def automation(request):
+   return render(request, 'step1/automation.html', {})
+
+
+def data_plot(header,lines):
+   pass
+
+def counting(request):
+   with open(os.path.join(WORKDIR, 'data', 'tables', 'tax_table_amostras.tsv'), 'r') as f: #mudar para tabela final
+      header = f.readline().split('\t')
+      lines = [x.rstrip().split('\t') for x in f.readlines()]
+   data_plot(header, lines)
+   return render(request, 'step2/bacterial_counting.html', {'header2':header, 'lines2':lines})
+
+
 
 def questions(request):
    question = request.path_info.split('/')[2]

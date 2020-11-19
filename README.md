@@ -15,6 +15,7 @@ $ git clone https://github.com/esthercamilo/compose16SMiSeq.git
 ```
 docker-compose up -d  
 ```
+
 3. Access the container
 
 a) Display docker running containers:
@@ -48,7 +49,7 @@ python manage.py migrate
 python manage.py createsuperuser  
 ```
 
-5. Create a superuser to access the application
+5. Deploy application
 
 ```
 python manage.py runserver  

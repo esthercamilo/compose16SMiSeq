@@ -6,7 +6,6 @@
 <script src="{% static 'js/tools.js' %}"></script>
 
 
-
 <div style="font-size:20px;">Performed trimming
 </div>
 
@@ -18,19 +17,54 @@
         {% for line in v %}
         <tr>
             <td>
-                <a href="#" class="open-modal-report" role="button" data-toggle="modal"
-                   data-form="{% url 'report' id=line }" data-target="#myEdit" >{{line}}</a>
+
+                <a type="tex" href="#" data-toggle="modal" data-target="#exampleModal{{line}}" class="open-modal-report">
+                  {{line}}
+                </a>
+
+<!--                <a href="#" class="open-modal-report" role="button" data-toggle="modal"-->
+<!--                  data-target="#myEdit" >{{line}}</a>-->
             </td>
         </tr>
+
+
+        <div class="modal fade" id="exampleModal{{line}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Sample {{line}} - Phred:{{k}}</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                  <p>Before</p>
+                  <div id="plot1{{line}}"></div>
+                  <p>After</p>
+                  <div id="plot2{{line}}"></div>
+                  <script src="{% static 'js/graphs.js' %}" onload="plot({{line}},{{k}})"></script>
+              </div>
+
+            </div>
+          </div>
+        </div>
+
+
+
+
+
+
+
+
         {% endfor %}
     </table>
-<div id="modal-div-report"></div>
+
 </div>
 {% endfor %}
 
 
 
-<script src="{% static 'js/graphs.js' %}"></script>
+
 
 
 

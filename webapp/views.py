@@ -45,10 +45,10 @@ def trimming_results(request):
 def getplot(idplot):
    return idplot
 
-def reports(request, id=None):
-   instance = getplot(id=id)
+def reports(request):
+   data1, data2 = getplot(id=1) #somente para 1 por enquanto
    context = {
-      'instance': instance
+      'before': data1, 'after':data2
    }
    return render(request, 'step1/modal.html', context)
 

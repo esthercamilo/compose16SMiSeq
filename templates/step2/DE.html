@@ -1,0 +1,81 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+<link href="{% static 'css/style2.css' %}" rel="stylesheet">
+
+<div style="font-size:20px;">Define the Phred score for trimming
+
+    <form action="" method="post">
+      {% csrf_token %}
+      <div class="input-group mb-3">
+          <input type="text" class="form-control" name="trim_threshold"
+                 aria-describedby="basic-addon2">
+          <div class="input-group-append">
+            <button class="btn btn-outline-secondary" type="input">Submit</button>
+          </div>
+      </div>
+    </form>
+</div>
+
+<script src="{% static 'js/tools.js' %}"></script>
+
+<div class="trim_files">
+    <h4>Available files</h4>
+    <table>
+        {% for line in files %}
+        <tr><td>{{ line }}</td></tr>
+        {% endfor %}
+    </table>
+</div>
+
+
+
+<!--<form action="" method="post">-->
+<!--    {% csrf_token %}-->
+<!--<div>-->
+<!--    <div class="input-group" style="padding:10px;">-->
+<!--        <input type="text" class="form-control">-->
+<!--        <div class="input-group-append">-->
+<!--            <span class="input-group-text">Import file</span>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--</div>-->
+<!--<div>-->
+<!--    <div class="input-group" style="padding:10px;">-->
+<!--        <div class="input-group-append">-->
+<!--            <span class="input-group-text">Add Epitope</i></span>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--</div>-->
+
+<!--<div class="epitopes">-->
+<!--    <div class="input-group" style="padding:10px;">-->
+<!--        <div class="input-group-prepend">-->
+<!--            <span class="input-group-text">Epitope</span>-->
+<!--        </div>-->
+<!--        <input type="text" class="form-control" name="epitope"/>-->
+<!--        <div class="input-group-prepend">-->
+<!--            <span class="input-group-text">MHC restrict alleles</span>-->
+<!--        </div>-->
+<!--        <input type="text" class="form-control" name="mhc">-->
+<!--        <div class="input-group-prepend">-->
+<!--            <span class="input-group-text"><i class="far fa-trash-alt"></i></span>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--</div>-->
+
+<!--<div class="regions" style="padding:10px;">-->
+<!--    <p style="padding:10px;">Population</p>-->
+<!--    <input type="text" class="form-control" name="country"/>-->
+<!--    <br/>-->
+<!--    <input class="btn btn-primary" type="submit" value="Submit">-->
+<!--</div>-->
+
+
+
+<!--</form>-->
+
+{% endblock %}
+
+

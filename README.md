@@ -2,7 +2,7 @@
 
 ## How to compose this docker project
 
-###Steps
+### Steps
 
 1. Clone from github
 ```

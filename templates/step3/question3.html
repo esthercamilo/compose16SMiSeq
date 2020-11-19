@@ -5,10 +5,15 @@
 <link href="{% static 'css/style2.css' %}" rel="stylesheet">
 
 <div style="font-size:20px;">Questão 3
-    <p class="q">Os processo descritos em 3.1 e 3.2 são passíveis de automação? Seria possível montar um script que realize todo o processo, tendo como input apenas os arquivos FASTQ (R1 e R2) do sequenciamento? Discorra sobre a possibilidade disso, e, caso possível, como garantir (ou ao menos medir) a qualidade desta montagem/anotação/identificação. Comente sobre possíveis problemas. </p>
+    <p class="q">Os processo descritos em 1 e 2 são passíveis de automação? Seria possível montar um script que realize todo o processo, tendo como input apenas os arquivos FASTQ (R1 e R2) do sequenciamento? Discorra sobre a possibilidade disso, e, caso possível, como garantir (ou ao menos medir) a qualidade desta montagem/anotação/identificação. Comente sobre possíveis problemas. </p>
 
-    <p class="a">Aqui será colocada a resposta</p>
-
+    <p class="a">Sim. O NCBI tem um pipeline para anotação totalmente automática. Há várias métricas que se pode usar para
+    avaliar a qualidade da montagem: número de contigs, N50 e porcentagem CG. Com relação a anotação há poucas métricas para
+    a determinação da qualidade. No caso da anotação funcional de genomas bacterianos, por exemplo, é possível se valer do fato
+        de que genes próximos tendem
+    a codificar proteínas com funções relacionadas. </p>
+<!--    <p class="q"><a href="https://bmcbioinformatics.biomedcentral.com/articles/10.1186/s12859-017-1761-2"></a>-->
+<!--    https://bmcbioinformatics.biomedcentral.com/articles/10.1186/s12859-017-1761-2</p>-->
 </div>
 
 {% endblock %}

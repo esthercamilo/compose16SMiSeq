@@ -4,7 +4,7 @@
 
 <link href="{% static 'css/style2.css' %}" rel="stylesheet">
 <script src="{% static 'js/tools.js' %}"></script>
-
+<script src="{% static 'js/graphs.js' %}"></script>
 
 <div style="font-size:20px;">Performed trimming
 </div>
@@ -18,42 +18,40 @@
         <tr>
             <td>
 
-                <a type="tex" href="#" data-toggle="modal" data-target="#exampleModal{{line}}" class="open-modal-report">
-                  {{line}}
+                <a type="tex" href="#" data-toggle="modal" data-target="#exampleModal{{line}}"
+                   class="open-modal-report">
+                    {{line}}
                 </a>
 
-<!--                <a href="#" class="open-modal-report" role="button" data-toggle="modal"-->
-<!--                  data-target="#myEdit" >{{line}}</a>-->
+                <!--                <a href="#" class="open-modal-report" role="button" data-toggle="modal"-->
+                <!--                  data-target="#myEdit" >{{line}}</a>-->
             </td>
         </tr>
 
 
-        <div class="modal fade" id="exampleModal{{line}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-          <div class="modal-dialog" role="document">
-            <div class="modal-content">
-              <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Sample {{line}} - Phred:{{k}}</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                  <span aria-hidden="true">&times;</span>
-                </button>
-              </div>
-              <div class="modal-body">
-                  <p>Before</p>
-                  <div id="plot1{{line}}"></div>
-                  <p>After</p>
-                  <div id="plot2{{line}}"></div>
-                  <script src="{% static 'js/graphs.js' %}" onload="plot({{line}},{{k}})"></script>
-              </div>
+        <div class="modal fade" id="exampleModal{{line}}" tabindex="-1" role="dialog"
+             aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Sample {{line}} - Phred:{{k}}</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <p>Before</p>
+                        <div id="plot1{{line}}"></div>
+                        <p>After</p>
+                        <div class="modal-body">
+                            <div id="boxplot_phred"></div>
+                            <script>plot('','')</script>
+                        </div>
+                    </div>
 
+                </div>
             </div>
-          </div>
         </div>
-
-
-
-
-
-
 
 
         {% endfor %}
@@ -61,11 +59,6 @@
 
 </div>
 {% endfor %}
-
-
-
-
-
 
 
 {% endblock %}

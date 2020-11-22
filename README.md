@@ -1,3 +1,6 @@
+<p style="color:red; font-size:20px;">Para atualizações posteriores ao prazo do projeto, verificar branch <b>delay</b></p>
+
+
 # Pipeline for Metagenomics analysis
 
 ## How to compose this docker project

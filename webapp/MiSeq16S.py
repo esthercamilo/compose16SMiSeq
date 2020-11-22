@@ -35,3 +35,35 @@ class QualityNGS(object):
         pass
 
 
+class OTU(object):
+    def __init__(self):
+        self.database = os.path.join(WORKDIR, 'data', 'database', 'fasta_file.fasta')
+        self.fastq_folder = os.path.join(WORKDIR, 'data','fastq_final')
+        self.usearch = os.path.join(WORKDIR, 'apps', 'usearch11.0.667_i86linux32')
+        self.indexed_db = self.index_fasta()
+        self.outputfolder = os.path.join(WORKDIR, 'data', 'otutab')
+
+    def index_fasta(self):
+        index_otu = os.path.join(WORKDIR,'data','database', 'otus.udb')
+        comm = [self.usearch, '-makeudb_usearch', self.database, '-output', index_otu  ]
+        #subprocess.check_call(comm)
+        return index_otu
+
+    def mapotu(self, fastq):
+        comm = [self.usearch, '-otutab', fastq, '-otus', self.indexed_db,
+                '-otutabout', os.path.join(self.outputfolder,os.path.basename(fastq).replace('.fastq','_map.txt')),
+                '-mapout', os.path.join(self.outputfolder,os.path.basename(fastq).replace('.fastq', '_otutab.txt'))]
+        subprocess.check_call(comm)
+
+    def summarize_otus(self):
+        otus = [x for x in os.listdir(self.outputfolder) if '_otutab.txt' in x]
+
+
+
+
+
+
+if __name__ == "__main__":
+    WORKDIR = Path(os.getcwd()).parent
+    otu = OTU()
+    otu.mapotu('/home/gntech/Documents/Projetos/PROSPECTA/compose16SMiSeq/data/fqs/F3D0_S188_L001_R1_001.fastq')

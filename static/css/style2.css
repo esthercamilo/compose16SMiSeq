@@ -18,3 +18,9 @@ color:black;
 font-size:15px;
 color: darkgray;
 }
+
+.rolltable{
+overflow:scroll;
+width:800px;
+height:350px;
+}

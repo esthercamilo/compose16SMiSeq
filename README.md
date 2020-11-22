@@ -1,4 +1,6 @@
-<p style="color:red; font-size:20px;">Para atualizações posteriores ao prazo do projeto, verificar branch <b>delay</b></p>
+```diff
+- Para atualizações posteriores ao prazo do projeto, verificar branch delay.
+```
 
 
 # Pipeline for Metagenomics analysis
